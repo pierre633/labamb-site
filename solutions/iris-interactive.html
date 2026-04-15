@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>labamb — L'agence IA outbound pour les agences conseil en communication digitale tourisme</title>
+    <meta name="description" content="labamb construit des Sales Machines IA pour les agences digitales tourisme. Ciblage intelligent d'offices de tourisme, emails personnalisés, infrastructure complète.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://labamb.agency/solutions/iris-interactive">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://labamb.agency/solutions/iris-interactive">
+    <meta property="og:title" content="labamb — L'agence IA outbound pour les agences conseil en communication digitale tourisme">
+    <meta property="og:description" content="labamb construit des Sales Machines IA pour les agences digitales tourisme. Ciblage intelligent d'offices de tourisme, emails personnalisés, infrastructure complète.">
+    <meta property="og:image" content="https://labamb.agency/og-image.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="labamb">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="labamb — L'agence IA outbound pour les agences conseil en communication digitale tourisme">
+    <meta name="twitter:description" content="labamb construit des Sales Machines IA pour les agences digitales tourisme. Ciblage intelligent d'offices de tourisme, emails personnalisés, infrastructure complète.">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0a'/><text x='4' y='23' font-family='Inter,sans-serif' font-size='18' font-weight='700' fill='%232563eb'>lb</text></svg>">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "labamb",
+        "url": "https://labamb.agency",
+        "description": "Studio IA de Business Intelligence spécialisé en outbound et Go-To-Market B2B.",
+        "email": "pierre@labamb.fr"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --black: #0a0a0a; --white: #ffffff; --gray-50: #f9fafb; --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb; --gray-400: #9ca3af; --gray-500: #6b7280; --gray-600: #4b5563;
+            --gray-700: #374151; --gray-900: #111827; --accent: #2563eb; --accent-light: #eff6ff;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-900); background: var(--white); line-height: 1.6;
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-200); transition: box-shadow 0.3s; }
+        nav.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
+        .nav-inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; color: var(--black); text-decoration: none; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--black); }
+        .nav-cta { background: var(--black) !important; color: var(--white) !important; padding: 8px 20px !important; border-radius: 8px; font-size: 0.875rem !important; font-weight: 500 !important; transition: all 0.2s !important; }
+        .nav-cta:hover { opacity: 0.85; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--black); margin: 5px 0; border-radius: 2px; transition: all 0.3s; }
+
+        /* SECTIONS */
+        section { padding: 100px 24px; position: relative; }
+        .container { max-width: 1120px; margin: 0 auto; }
+
+        /* HERO */
+        .hero { padding-top: 160px; padding-bottom: 100px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(37,99,235,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.06) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
+            animation: gridPulse 8s ease-in-out infinite;
+        }
+        @keyframes gridPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+        .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35; pointer-events: none; animation: orbFloat 12s ease-in-out infinite; }
+        .hero-orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; right: -80px; }
+        .hero-orb-2 { width: 300px; height: 300px; background: #7c3aed; bottom: -60px; left: -60px; animation-delay: -4s; }
+        .hero-orb-3 { width: 200px; height: 200px; background: #06b6d4; top: 30%; left: 15%; animation-delay: -8s; opacity: 0.2; }
+        @keyframes orbFloat { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(20px,-30px) scale(1.05); } 66% { transform: translate(-15px,20px) scale(0.95); } }
+        .hero .container { position: relative; z-index: 2; }
+        .hero-badge { display: inline-block; padding: 6px 16px; background: var(--accent-light); color: var(--accent); font-size: 0.8rem; font-weight: 600; border-radius: 100px; margin-bottom: 24px; letter-spacing: 0.02em; animation: badgeIn 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both; }
+        @keyframes badgeIn { from { opacity: 0; transform: translateY(12px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .hero h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.035em; color: var(--black); max-width: 780px; margin: 0 auto 20px; animation: heroFadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.35s both; }
+        .gradient-text { background: linear-gradient(135deg, var(--accent), #7c3aed, #06b6d4, var(--accent)); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradientShift 6s ease-in-out infinite; }
+        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .hero p { font-size: 1.125rem; color: var(--gray-500); max-width: 560px; margin: 0 auto 40px; line-height: 1.7; animation: heroFadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s both; }
+        .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; animation: heroFadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.65s both; }
+        @keyframes heroFadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .proof-bar { display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--gray-100); animation: heroFadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.8s both; }
+        .proof-item { text-align: center; }
+        .proof-number { font-size: 1.75rem; font-weight: 800; color: var(--black); font-variant-numeric: tabular-nums; }
+        .proof-label { font-size: 0.8rem; color: var(--gray-400); margin-top: 2px; }
+
+        /* BUTTONS */
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--black); color: var(--white); border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.3s; position: relative; overflow: hidden; }
+        .btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--accent), #7c3aed); opacity: 0; transition: opacity 0.4s; }
+        .btn-primary:hover::before { opacity: 1; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,99,235,0.3); }
+        .btn-primary span { position: relative; z-index: 1; }
+        .btn-primary .arrow { position: relative; z-index: 1; transition: transform 0.3s; }
+        .btn-primary:hover .arrow { transform: translateX(4px); }
+        .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--white); color: var(--gray-700); border: 1.5px solid var(--gray-200); border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.3s; }
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); transform: translateY(-1px); }
+
+        /* PROBLEM */
+        .problem { background: var(--gray-50); }
+        .problem .container { max-width: 720px; text-align: center; }
+        .section-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+        .problem h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; line-height: 1.2; }
+        .problem p { font-size: 1.05rem; color: var(--gray-600); line-height: 1.75; }
+
+        /* PILLARS */
+        .pillars h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; text-align: center; margin-bottom: 56px; }
+        .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .pillar-card { padding: 36px 28px; border: 1px solid var(--gray-200); border-radius: 16px; background: var(--white); transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden; }
+        .pillar-card::before { content: ''; position: absolute; inset: -1px; border-radius: 16px; background: linear-gradient(135deg, var(--accent), #7c3aed, #06b6d4); opacity: 0; transition: opacity 0.4s; z-index: -1; }
+        .pillar-card::after { content: ''; position: absolute; inset: 1px; border-radius: 15px; background: var(--white); z-index: -1; }
+        .pillar-card:hover::before { opacity: 1; }
+        .pillar-card:hover { border-color: transparent; box-shadow: 0 16px 48px rgba(37,99,235,0.1); transform: translateY(-6px); }
+        .pillar-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: all 0.4s; }
+        .pillar-card:hover .pillar-icon { background: var(--accent); transform: scale(1.08); }
+        .pillar-card:hover .pillar-icon svg { stroke: white; }
+        .pillar-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.01em; }
+        .pillar-card p { font-size: 0.925rem; color: var(--gray-500); line-height: 1.65; }
+
+        /* CTA */
+        .cta-section { background: var(--black); color: var(--white); text-align: center; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 50% 80% at 20% 50%, rgba(37,99,235,0.2), transparent), radial-gradient(ellipse 50% 80% at 80% 50%, rgba(124,58,237,0.15), transparent); animation: ctaGlow 6s ease-in-out infinite alternate; }
+        @keyframes ctaGlow { 0% { opacity: 0.6; } 100% { opacity: 1; transform: scale(1.05); } }
+        .cta-section .container { position: relative; z-index: 2; }
+        .cta-section h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+        .cta-section p { color: var(--gray-400); font-size: 1.05rem; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .btn-white { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: var(--white); color: var(--black); border: none; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.3s; position: relative; overflow: hidden; }
+        .btn-white::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #eff6ff, #ede9fe); opacity: 0; transition: opacity 0.3s; }
+        .btn-white:hover::before { opacity: 1; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,255,255,0.15); }
+        .btn-white span, .btn-white .arrow { position: relative; z-index: 1; }
+        .btn-white .arrow { transition: transform 0.3s; }
+        .btn-white:hover .arrow { transform: translateX(4px); }
+
+        /* FOOTER */
+        footer { padding: 40px 24px; border-top: 1px solid var(--gray-200); text-align: center; }
+        footer p { font-size: 0.825rem; color: var(--gray-400); }
+        footer a { color: var(--gray-500); text-decoration: none; }
+        footer a:hover { color: var(--black); }
+
+        /* SCROLL PROGRESS */
+        .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; z-index: 200; background: linear-gradient(90deg, var(--accent), #7c3aed, #06b6d4); transform-origin: left; transform: scaleX(0); transition: transform 0.1s linear; }
+
+        /* ANIMATIONS */
+        .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .scale-in { opacity: 0; transform: scale(0.92) translateY(20px); transition: all 0.6s cubic-bezier(0.16,1,0.3,1); }
+        .scale-in.visible { opacity: 1; transform: scale(1) translateY(0); }
+        .magnetic { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 24px; gap: 20px; border-bottom: 1px solid var(--gray-200); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+            .nav-links.open { display: flex; }
+            .hamburger { display: block; }
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+            section { padding: 72px 20px; }
+            .hero { padding-top: 130px; padding-bottom: 72px; }
+            .pillars-grid { grid-template-columns: 1fr; gap: 20px; }
+            .proof-bar { gap: 28px; }
+            .hero-orb-1 { width: 250px; height: 250px; }
+            .hero-orb-2 { width: 180px; height: 180px; }
+            .hero-orb-3 { display: none; }
+        }
+
+        /* REDUCED MOTION */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+            .fade-up, .scale-in { opacity: 1 !important; transform: none !important; }
+            .hero h1, .hero > .container > p, .hero-ctas, .proof-bar, .hero-badge { opacity: 1 !important; transform: none !important; animation: none !important; }
+            .scroll-progress { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header>
+<nav id="navbar" aria-label="Navigation principale">
+    <div class="nav-inner">
+        <a href="https://labamb.agency" class="logo" aria-label="labamb - Accueil">la<span>bamb</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="https://labamb.agency/#pillars">Ce qu'on fait</a>
+            <a href="https://labamb.agency/#how">Comment</a>
+            <a href="https://calendly.com/pierre-labamb/30min" target="_blank" rel="noopener noreferrer" class="nav-cta magnetic">Prendre RDV</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+</header>
+
+<main>
+
+<section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+    <div class="container">
+        <div class="hero-badge">labamb &middot; Solution sur-mesure</div>
+        <h1 id="hero-heading">L'agence IA outbound pour les <span class="gradient-text">agences conseil en communication digitale tourisme</span></h1>
+        <p>Vos offices de tourisme et collectivités cibles existent déjà. On les identifie, on les contacte, vous vendez vos solutions Jungle.</p>
+        <div class="hero-ctas">
+            <a href="https://calendly.com/pierre-labamb/30min" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic"><span>R&eacute;server un appel</span> <span class="arrow">&rarr;</span></a>
+            <a href="#solution" class="btn-secondary magnetic">Voir l'approche</a>
+        </div>
+        <div class="proof-bar">
+            <div class="proof-item">
+                <div class="proof-number count-up" data-target="15" data-suffix="-30">0</div>
+                <div class="proof-label">data points par compte</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number count-up" data-target="100" data-suffix="%">0</div>
+                <div class="proof-label">infrastructure incluse</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number count-up" data-target="1200" data-suffix="+">0</div>
+                <div class="proof-label">offices de tourisme et collectivités ciblables en France</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="problem" aria-labelledby="problem-heading">
+    <div class="container fade-up">
+        <div class="section-label">Le probl&egrave;me</div>
+        <h2 id="problem-heading">Les agences digitales tourisme prospectent sans data territoriale</h2>
+        <p>Vous construisez des solutions digitales innovantes pour le tourisme institutionnel — sites, apps, assistants IA — mais trouver les bons décideurs (directeurs marketing, responsables e-tourisme) dans les offices et collectivités reste chaotique. Les bases génériques ne comprennent pas les spécificités territoriales, et vos vraies cibles se cachent dans des structures publiques fragmentées et peu visibles en ligne.</p>
+    </div>
+</section>
+
+<section class="pillars" id="solution" aria-labelledby="solution-heading">
+    <div class="container">
+        <div class="section-label fade-up" style="text-align:center">La solution labamb</div>
+        <h2 class="fade-up" id="solution-heading">Votre machine outbound, calibr&eacute;e agences conseil en communication digitale tourisme</h2>
+        <div class="pillars-grid">
+            <div class="pillar-card scale-in">
+                <div class="pillar-icon">
+                    <svg width="24" height="24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" style="transition: stroke 0.4s" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                </div>
+                <h3>Data Intelligence tourisme territorial</h3>
+                <p>On identifie précisément les offices de tourisme, collectivités et réseaux socio-professionnels en France qui investissent en digitalisation. Signaux exploités : budgets communication, projets de refonte web, recrutements marketing, activité sur réseaux sociaux, maturité digitale actuelle.</p>
+            </div>
+            <div class="pillar-card scale-in">
+                <div class="pillar-icon">
+                    <svg width="24" height="24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" style="transition: stroke 0.4s" aria-hidden="true"><path d="M12 2a4 4 0 0 0-4 4v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-2V6a4 4 0 0 0-4-4z"/><circle cx="12" cy="15" r="2"/></svg>
+                </div>
+                <h3>IA calibrée solutions e-tourisme</h3>
+                <p>Notre moteur IA est entraîné sur votre écosystème Jungle — Jungle Guide, Jungle Edit, Jungle Agent, mobilité durable. Chaque message parle de l'enjeu concret du prospect : améliorer l'expérience visiteur, piloter les partenaires, réduire les coûts de refonte via les Collections.</p>
+            </div>
+            <div class="pillar-card scale-in">
+                <div class="pillar-icon">
+                    <svg width="24" height="24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" style="transition: stroke 0.4s" aria-hidden="true"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4z"/></svg>
+                </div>
+                <h3>Machine multicanal destinations</h3>
+                <p>Domaines dédiés, warm-up progressif, séquences email + LinkedIn ciblant directeurs marketing, responsables communication et chefs de projet e-tourisme dans les offices et collectivités. Vous recevez des conversations qualifiées prêtes pour l'IRIS Lab'.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="cta" aria-labelledby="cta-heading">
+    <div class="container fade-up">
+        <h2 id="cta-heading">Prêt à remplir votre pipeline de destinations touristiques ?</h2>
+        <p>30 minutes pour analyser votre march&eacute; et voir si labamb peut construire votre machine.</p>
+        <a href="https://calendly.com/pierre-labamb/30min" target="_blank" rel="noopener noreferrer" class="btn-white magnetic"><span>R&eacute;server un cr&eacute;neau</span> <span class="arrow">&rarr;</span></a>
+    </div>
+</section>
+
+</main>
+
+<footer role="contentinfo">
+    <p>&copy; 2026 labamb &mdash; Studio IA de Business Intelligence &middot; <a href="mailto:pierre@labamb.fr">pierre@labamb.fr</a></p>
+</footer>
+
+<script>
+(function() {
+    'use strict';
+    const navbar = document.getElementById('navbar');
+    const scrollProgress = document.getElementById('scrollProgress');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('open');
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !expanded);
+    });
+    navLinks.querySelectorAll('a').forEach(a => { a.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('open'); }); });
+
+    function onScroll() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        scrollProgress.style.transform = 'scaleX(' + (docHeight > 0 ? scrollTop / docHeight : 0) + ')';
+        navbar.classList.toggle('scrolled', scrollTop > 10);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parent = entry.target.parentElement;
+                if (parent && parent.classList.contains('pillars-grid')) {
+                    const siblings = Array.from(parent.children);
+                    entry.target.style.transitionDelay = (siblings.indexOf(entry.target) * 0.15) + 's';
+                }
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up, .scale-in').forEach(el => observer.observe(el));
+
+    const counters = document.querySelectorAll('.count-up');
+    let done = false;
+    function animateCounters() {
+        if (done) return; done = true;
+        counters.forEach(c => {
+            const target = parseInt(c.dataset.target), suffix = c.dataset.suffix || '', start = performance.now();
+            function update(now) {
+                const p = Math.min((now - start) / 1800, 1);
+                c.textContent = Math.round((1 - Math.pow(2, -10 * p)) * target) + suffix;
+                if (p < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+        });
+    }
+    const proofObs = new IntersectionObserver(e => { e.forEach(en => { if (en.isIntersecting) { animateCounters(); proofObs.unobserve(en.target); } }); }, { threshold: 0.5 });
+    const pb = document.querySelector('.proof-bar'); if (pb) proofObs.observe(pb);
+
+    document.querySelectorAll('.magnetic').forEach(btn => {
+        btn.addEventListener('mousemove', e => { const r = btn.getBoundingClientRect(); btn.style.transform = 'translate(' + ((e.clientX - r.left - r.width/2)*0.15) + 'px, ' + ((e.clientY - r.top - r.height/2)*0.15) + 'px)'; });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+
+    const orbs = document.querySelectorAll('.hero-orb'); let ticking = false;
+    window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(() => { orbs.forEach((o,i) => { o.style.transform = 'translateY(' + (window.scrollY * (0.15 + i*0.08)) + 'px)'; }); ticking = false; }); ticking = true; } }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
