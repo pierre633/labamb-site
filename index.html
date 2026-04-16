@@ -339,13 +339,23 @@
         .step p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.65; }
 
         /* ===== DOMAINS ===== */
-        .domains { background: var(--dark); color: var(--white); }
-        .domains .section-label { color: var(--blue-muted); }
-        .domains .section-header h2 { color: var(--white); }
-        .domains .section-header p { color: rgba(255,255,255,0.45); }
+        .domains { background: var(--white); color: var(--dark); position: relative; }
+        .domains::before {
+            content: ''; position: absolute; top: -120px; right: -180px; width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(123, 143, 232, 0.05) 0%, transparent 70%);
+            border-radius: 50%; pointer-events: none; z-index: 0;
+        }
+        .domains::after {
+            content: ''; position: absolute; bottom: -80px; left: -120px; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(155, 143, 232, 0.04) 0%, transparent 70%);
+            border-radius: 50%; pointer-events: none; z-index: 0;
+        }
+        .domains .section-label { color: var(--blue); }
+        .domains .section-header h2 { color: var(--dark); }
+        .domains .section-header p { color: var(--gray-700); }
         .domains-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
         .domain-card {
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+            background: var(--gray-100); border: 1px solid rgba(123, 143, 232, 0.06);
             border-radius: 16px; padding: 32px; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: default; position: relative; overflow: hidden;
         }
@@ -355,43 +365,48 @@
             transition: all 0.5s;
         }
         .domain-card:hover::before {
-            background: linear-gradient(90deg, transparent, rgba(123, 143, 232, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(123, 143, 232, 0.3), transparent);
         }
         .domain-card:hover {
-            background: rgba(255,255,255,0.06); border-color: rgba(123, 143, 232, 0.2);
-            transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            background: var(--white); border-color: rgba(123, 143, 232, 0.2);
+            transform: translateY(-4px); box-shadow: 0 16px 48px rgba(123, 143, 232, 0.08);
         }
         .domain-icon {
             width: 44px; height: 44px; background: rgba(123, 143, 232, 0.1);
             border-radius: 10px; display: flex; align-items: center; justify-content: center;
             font-size: 1.2rem; margin-bottom: 18px;
         }
-        .domain-card h3 { font-size: 1.08rem; font-weight: 650; margin-bottom: 8px; color: rgba(255,255,255,0.9); }
-        .domain-card .tagline { font-size: 0.85rem; color: var(--blue-muted); font-weight: 450; margin-bottom: 12px; }
-        .domain-card p { font-size: 0.87rem; color: rgba(255,255,255,0.4); line-height: 1.7; }
+        .domain-card h3 { font-size: 1.08rem; font-weight: 650; margin-bottom: 8px; color: var(--dark); }
+        .domain-card .tagline { font-size: 0.85rem; color: var(--blue); font-weight: 450; margin-bottom: 12px; }
+        .domain-card p { font-size: 0.87rem; color: var(--gray-700); line-height: 1.7; }
 
         /* ===== CTA ===== */
-        .cta-section { background: var(--white); text-align: center; }
+        .cta-section { background: var(--white); text-align: center; position: relative; }
+        .cta-section::before {
+            content: ''; position: absolute; top: 50%; left: 50%; width: 600px; height: 600px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(123, 143, 232, 0.04) 0%, transparent 65%);
+            border-radius: 50%; pointer-events: none; z-index: 0;
+        }
         .cta-box {
-            background: linear-gradient(135deg, #1e1e2f 0%, #262645 50%, #2d2d55 100%);
+            background: var(--gray-100);
             border-radius: 24px; padding: 80px 48px; max-width: 800px; margin: 0 auto;
             position: relative; overflow: hidden;
+            border: 1px solid rgba(123, 143, 232, 0.06);
         }
         .cta-box h2 {
             font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 700;
-            color: var(--white); margin-bottom: 16px; letter-spacing: -0.02em;
+            color: var(--dark); margin-bottom: 16px; letter-spacing: -0.02em;
             position: relative; z-index: 1;
         }
         .cta-box p {
-            font-size: 1rem; color: rgba(255,255,255,0.5); margin-bottom: 36px;
+            font-size: 1rem; color: var(--gray-700); margin-bottom: 36px;
             position: relative; z-index: 1;
         }
         .cta-box .btn-primary {
             position: relative; z-index: 1;
-            background: var(--white); color: var(--dark);
-            box-shadow: 0 2px 16px rgba(255,255,255,0.1);
         }
-        .cta-box .btn-primary:hover { box-shadow: 0 6px 24px rgba(255,255,255,0.15); }
+        .cta-box .btn-primary:hover { box-shadow: 0 6px 24px rgba(30, 30, 47, 0.22); }
 
         /* ===== FOOTER ===== */
         footer {
@@ -805,7 +820,7 @@ document.querySelectorAll('.stat-number').forEach(el => cObs.observe(el));
     draw();
 })();
 
-// ===== DOMAINS CANVAS — aurora blobs =====
+// ===== DOMAINS CANVAS — aurora blobs (light bg) =====
 (function() {
     const section = document.getElementById('domains');
     const { c, ctx, w, h } = initCanvas('domains-canvas', section);
@@ -817,9 +832,9 @@ document.querySelectorAll('.stat-number').forEach(el => cObs.observe(el));
         for (let i = 0; i < 3; i++) {
             const x = w() * (0.3 + 0.4 * Math.sin(t + i * 2.1));
             const y = h() * (0.3 + 0.4 * Math.cos(t * 0.7 + i * 1.5));
-            const g = ctx.createRadialGradient(x, y, 0, x, y, 300);
+            const g = ctx.createRadialGradient(x, y, 0, x, y, 280);
             const cl = colors[i];
-            g.addColorStop(0, `rgba(${cl[0]}, ${cl[1]}, ${cl[2]}, 0.08)`);
+            g.addColorStop(0, `rgba(${cl[0]}, ${cl[1]}, ${cl[2]}, 0.06)`);
             g.addColorStop(1, 'transparent');
             ctx.fillStyle = g; ctx.fillRect(0, 0, w(), h());
         }
@@ -840,7 +855,7 @@ document.querySelectorAll('.stat-number').forEach(el => cObs.observe(el));
         for (let i = 0; i < 3; i++) {
             const r = 100 + i * 80 + Math.sin(t + i) * 40;
             const g = ctx.createRadialGradient(cx, cy, r * 0.3, cx, cy, r);
-            g.addColorStop(0, `rgba(123, 143, 232, ${0.04 - i * 0.01})`);
+            g.addColorStop(0, `rgba(123, 143, 232, ${0.06 - i * 0.015})`);
             g.addColorStop(1, 'transparent');
             ctx.fillStyle = g; ctx.fillRect(0, 0, w(), h());
         }
