@@ -154,12 +154,9 @@
     }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- PERF: Google Fonts chargé en async (non-bloquant) -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <!-- PERF: Google Fonts chargé 100% async via JS — zéro render-blocking -->
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -670,11 +667,16 @@
 </footer>
 
 <script>
-// ===== PERF: Canvas lazy-loading system =====
-// Chaque canvas ne s'initialise que quand sa section est visible,
-// et se stoppe quand elle sort de l'écran. Réduit TBT de ~8s à ~0.5s.
+// ===== PERF: Load Google Fonts async via JS — zero render-blocking =====
+(function() {
+    var l = document.createElement('link');
+    l.rel = 'stylesheet';
+    l.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap';
+    document.head.appendChild(l);
+})();
 
-const canvasAnimations = new Map(); // track active animations
+// ===== PERF: Canvas lazy-loading system =====
+const canvasAnimations = new Map();
 
 function lazyCanvas(sectionSelector, canvasId, setupFn) {
     const section = typeof sectionSelector === 'string'
@@ -723,7 +725,7 @@ function lazyCanvas(sectionSelector, canvasId, setupFn) {
     canvasObs.observe(section);
 }
 
-// ===== NAV =====
+// ===== NAV (runs immediately — above the fold) =====
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
 
@@ -777,11 +779,14 @@ const cObs = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.stat-number').forEach(el => cObs.observe(el));
 
-// ===== HERO CANVAS — connected nodes (LAZY) =====
+// ===== PERF: Defer all canvas + heavy JS until after first paint =====
+setTimeout(() => {
+
+// ===== HERO CANVAS — connected nodes (LAZY, reduced particles) =====
 lazyCanvas('.hero', 'hero-canvas', ({ c, ctx, w, h, section }) => {
     let mouse = { x: -1000, y: -1000 };
     const pts = [];
-    for (let i = 0; i < 60; i++) pts.push({ x: Math.random() * 2000, y: Math.random() * 1200, vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35, r: Math.random() * 2 + 0.8 });
+    for (let i = 0; i < 35; i++) pts.push({ x: Math.random() * 2000, y: Math.random() * 1200, vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35, r: Math.random() * 2 + 0.8 });
 
     section.addEventListener('mousemove', e => { const r = section.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; }, { passive: true });
     section.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; });
@@ -920,6 +925,8 @@ window.addEventListener('scroll', () => {
         scrollTicking = true;
     }
 }, { passive: true });
+
+}, 200); // end setTimeout — defer canvas + heavy JS
 </script>
 
 </body>
