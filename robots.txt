@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://labamb.agency/sitemap.xml
