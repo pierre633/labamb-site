@@ -1,44 +1,68 @@
 <!DOCTYPE html>
-<html lang="fr" itemscope itemtype="https://schema.org/ProfessionalService">
+<html lang="en" itemscope itemtype="https://schema.org/ProfessionalService">
 <head>
     <link rel="icon" type="image/png" href="./favicon.png">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 
     <meta charset="UTF-8">
+    <script>
+    // Language: English by default, French for visitors in France. The visitor's
+    // country is read from the browser time zone (metropolitan France + overseas
+    // territories): nothing is sent anywhere. An explicit choice (EN / FR switch,
+    // ?lang=en) is remembered and wins over the time zone. Runs before rendering.
+    (function () {
+        var FR_TIMEZONES = ['Europe/Paris', 'America/Guadeloupe', 'America/Martinique', 'America/Cayenne', 'America/Miquelon', 'America/St_Barthelemy', 'America/Marigot', 'Indian/Reunion', 'Indian/Mayotte', 'Indian/Kerguelen', 'Pacific/Noumea', 'Pacific/Tahiti', 'Pacific/Marquesas', 'Pacific/Gambier', 'Pacific/Wallis'];
+        var forceEn = /[?&]lang=en(&|$)/.test(location.search);
+        var choice = null;
+        try {
+            if (forceEn) {
+                localStorage.setItem('labamb_lang', 'en');
+                history.replaceState(null, '', location.pathname + location.hash);
+            }
+            choice = localStorage.getItem('labamb_lang');
+        } catch (e) {}
+        if (forceEn || choice === 'en') return;
+        var tz = '';
+        try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+        if (choice === 'fr' || FR_TIMEZONES.indexOf(tz) !== -1) {
+            location.replace('/fr/' + location.hash);
+        }
+    })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Primary -->
-    <title>labamb — Agence IA Go-To-Market B2B | Systèmes d'acquisition sur mesure</title>
-    <meta name="description" content="labamb est un studio IA spécialisé en Go-To-Market B2B. On construit des systèmes d'acquisition sur mesure : scraping contextuel, intent data, automatisation outbound, copywriting IA. Des systèmes qui vous appartiennent.">
-    <meta name="keywords" content="agence IA go-to-market, outbound B2B automatisé, sales intelligence France, intent data, scraping données B2B, copywriting IA outbound, prospection automatisée, automatisation commerciale, machine outbound, système acquisition B2B, enrichissement données, scoring prospects IA">
+    <title>labamb — B2B Go-To-Market AI Agency | Custom-built acquisition systems</title>
+    <meta name="description" content="labamb is an AI studio specialized in B2B Go-To-Market. We build custom acquisition systems: contextual scraping, intent data, outbound automation, AI copywriting. Systems that you own.">
+    <meta name="keywords" content="AI go-to-market agency, automated B2B outbound, sales intelligence, intent data, B2B data scraping, AI outbound copywriting, automated prospecting, sales automation, outbound machine, B2B acquisition system, data enrichment, AI lead scoring">
     <meta name="author" content="labamb">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://labamb.agency/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="labamb — Agence IA Go-To-Market B2B">
-    <meta property="og:description" content="On construit des systèmes d'acquisition B2B sur mesure, adaptés à votre marché, avec les meilleures technologies IA — et ils vous appartiennent.">
+    <meta property="og:title" content="labamb — B2B Go-To-Market AI Agency">
+    <meta property="og:description" content="We build custom B2B acquisition systems, tailored to your market, with the best AI technologies — and you own them.">
     <meta property="og:url" content="https://labamb.agency/">
     <meta property="og:site_name" content="labamb">
-    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:image" content="https://labamb.agency/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="labamb — Studio IA Go-To-Market B2B">
+    <meta property="og:image:alt" content="labamb — B2B Go-To-Market AI Studio">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="labamb — Agence IA Go-To-Market B2B">
-    <meta name="twitter:description" content="Systèmes d'acquisition B2B sur mesure avec l'IA. Scraping, intent data, automatisation outbound, copywriting IA.">
+    <meta name="twitter:title" content="labamb — B2B Go-To-Market AI Agency">
+    <meta name="twitter:description" content="Custom B2B acquisition systems built with AI. Scraping, intent data, outbound automation, AI copywriting.">
     <meta name="twitter:image" content="https://labamb.agency/og-image.png">
 
-    <!-- GEO targeting -->
-    <meta name="geo.region" content="FR">
-    <meta name="geo.placename" content="France">
-    <meta name="language" content="fr">
-    <meta http-equiv="content-language" content="fr-FR">
-    <link rel="alternate" hreflang="fr" href="https://labamb.agency/">
+    <!-- Language targeting -->
+    <meta name="language" content="en">
+    <meta http-equiv="content-language" content="en">
+    <link rel="alternate" hreflang="en" href="https://labamb.agency/">
+    <link rel="alternate" hreflang="fr" href="https://labamb.agency/fr/">
     <link rel="alternate" hreflang="x-default" href="https://labamb.agency/">
 
     <!-- Structured Data: Organization -->
@@ -49,14 +73,14 @@
         "@id": "https://labamb.agency/#organization",
         "name": "labamb",
         "alternateName": "labamb Agency",
-        "description": "Studio IA d'intelligence économique spécialisé en Go-To-Market B2B. Construction de systèmes d'acquisition sur mesure avec les meilleures technologies IA.",
+        "description": "AI business intelligence studio specialized in B2B Go-To-Market. We build custom acquisition systems with the best AI technologies.",
         "url": "https://labamb.agency",
         "logo": "https://labamb.agency/logo.png",
         "foundingDate": "2024",
         "founder": {
             "@type": "Person",
             "name": "Pierre Lejeune",
-            "jobTitle": "Co-fondateur"
+            "jobTitle": "Co-founder"
         },
         "areaServed": [
             { "@type": "Country", "name": "France" },
@@ -64,18 +88,18 @@
             { "@type": "Country", "name": "Switzerland" }
         ],
         "serviceType": [
-            "Go-To-Market B2B",
+            "B2B Go-To-Market",
             "Sales Intelligence",
-            "Automatisation Outbound",
-            "Copywriting IA",
-            "Intent Data & Signaux d'achat",
-            "Scraping de données contextuelles",
-            "Infrastructure d'envoi email",
+            "Outbound Automation",
+            "AI Copywriting",
+            "Intent Data & Buying Signals",
+            "Contextual Data Scraping",
+            "Email Sending Infrastructure",
             "RevOps & CRM"
         ],
         "knowsAbout": [
-            "Intelligence artificielle appliquée au B2B",
-            "Prospection automatisée",
+            "Artificial intelligence applied to B2B",
+            "Automated prospecting",
             "Data enrichment",
             "Sales automation",
             "n8n workflows",
@@ -86,16 +110,16 @@
         "priceRange": "$$",
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "Services labamb",
+            "name": "labamb services",
             "itemListElement": [
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data & Intelligence commerciale", "description": "Scraping multi-sources, enrichissement waterfall, cartographie marché B2B" }},
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Signaux d'achat & Intent Data", "description": "Détection temps réel de signaux d'achat, scoring dynamique, alertes automatiques" }},
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Moteur IA & Copywriting outbound", "description": "Prompts propriétaires, personnalisation à 30 data points, matching cas clients" }},
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stratégie Go-To-Market", "description": "Définition ICP, positionnement, séquençage multicanal, segmentation" }},
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Infrastructure d'envoi & Délivrabilité", "description": "Domaines dédiés, warm-up, SPF/DKIM/DMARC, multi-mailboxes" }},
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Workflows & Automatisation", "description": "Workflows n8n sur mesure, agents IA, connexion outils, documentation" }},
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "RevOps & Pilotage", "description": "CRM, dashboards, reporting automatisé, optimisation continue" }},
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Veille concurrentielle", "description": "Monitoring concurrents, stacks technologiques, presse, benchmarks" }}
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data & Sales Intelligence", "description": "Multi-source scraping, waterfall enrichment, B2B market mapping" }},
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Buying Signals & Intent Data", "description": "Real-time buying signal detection, dynamic scoring, automatic alerts" }},
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Engine & Outbound Copywriting", "description": "Proprietary prompts, personalization on 30 data points, customer case matching" }},
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Go-To-Market Strategy", "description": "ICP definition, positioning, multichannel sequencing, segmentation" }},
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sending Infrastructure & Deliverability", "description": "Dedicated domains, warm-up, SPF/DKIM/DMARC, multiple mailboxes" }},
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Workflows & Automation", "description": "Custom n8n workflows, AI agents, tool integrations, documentation" }},
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "RevOps & Performance Management", "description": "CRM, dashboards, automated reporting, continuous optimization" }},
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Competitive Intelligence", "description": "Competitor monitoring, tech stacks, press, benchmarks" }}
             ]
         }
     }
@@ -106,10 +130,10 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "labamb — Agence IA Go-To-Market B2B",
-        "description": "Studio IA spécialisé en Go-To-Market B2B. Systèmes d'acquisition sur mesure.",
+        "name": "labamb — B2B Go-To-Market AI Agency",
+        "description": "AI studio specialized in B2B Go-To-Market. Custom-built acquisition systems.",
         "url": "https://labamb.agency/",
-        "inLanguage": "fr-FR",
+        "inLanguage": "en",
         "isPartOf": { "@id": "https://labamb.agency/#website" },
         "about": { "@id": "https://labamb.agency/#organization" },
         "speakable": {
@@ -127,26 +151,26 @@
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "Qu'est-ce qu'une agence IA Go-To-Market ?",
+                "name": "What is an AI Go-To-Market agency?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Une agence IA Go-To-Market comme labamb construit des systèmes d'acquisition B2B sur mesure en combinant intelligence artificielle, scraping de données contextuelles, intent data, et automatisation outbound. L'objectif : transformer des données marché en conversations qualifiées."
+                    "text": "An AI Go-To-Market agency like labamb builds custom B2B acquisition systems by combining artificial intelligence, contextual data scraping, intent data and outbound automation. The goal: turn market data into qualified conversations."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Comment fonctionne un système d'acquisition outbound automatisé ?",
+                "name": "How does an automated outbound acquisition system work?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "On part d'un audit de votre marché et de vos process actuels. On identifie les chantiers prioritaires, puis on livre un premier système fonctionnel en 2 semaines : pipelines de données, scoring IA, séquences email/LinkedIn personnalisées, infrastructure d'envoi dédiée. Le système vous appartient et est documenté."
+                    "text": "We start with an audit of your market and your current processes. We identify the priority projects, then deliver a first working system in 2 weeks: data pipelines, AI scoring, personalized email/LinkedIn sequences, dedicated sending infrastructure. You own the system and it is documented."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Quelle est la différence entre labamb et une agence de prospection classique ?",
+                "name": "What is the difference between labamb and a traditional prospecting agency?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Les agences classiques utilisent des bases génériques et des templates. labamb construit des systèmes sur mesure : scraping multi-sources, enrichissement en cascade, IA alimentée par 15 à 30 data points par prospect, infrastructure d'envoi incluse. Le résultat est un système évolutif qui vous appartient."
+                    "text": "Traditional agencies use generic databases and templates. labamb builds custom systems: multi-source scraping, waterfall enrichment, AI fed with 15 to 30 data points per prospect, sending infrastructure included. The result is a scalable system that you own."
                 }
             }
         ]
@@ -216,6 +240,12 @@
             transition: all 0.3s; cursor: pointer; border: none;
         }
         .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+        .lang-switch {
+            padding: 6px 12px; border: 1px solid var(--gray-300); border-radius: 8px;
+            font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; color: var(--gray-700);
+            transition: all 0.3s;
+        }
+        .lang-switch:hover { border-color: var(--blue-muted); color: var(--blue-dark); }
 
         /* ===== SECTIONS ===== */
         section { padding: 100px 24px; position: relative; overflow: hidden; }
@@ -469,14 +499,15 @@
 <div class="mouse-glow" id="mouseGlow"></div>
 
 <header>
-<nav id="nav" aria-label="Navigation principale">
+<nav id="nav" aria-label="Main navigation">
     <div class="nav-inner">
         <a href="#" class="logo" itemprop="name" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">la<span>bamb</span></a>
         <div class="nav-links">
-            <a href="#problem" class="nav-link">Le constat</a>
-            <a href="#process" class="nav-link">Méthode</a>
-            <a href="#domains" class="nav-link">Domaines</a>
-            <a href="https://calendly.com/pierre-labamb/30min" target="_blank" class="nav-cta" aria-label="Réserver un appel découverte">Réserver un appel</a>
+            <a href="#problem" class="nav-link">The reality</a>
+            <a href="#process" class="nav-link">Method</a>
+            <a href="#domains" class="nav-link">Expertise</a>
+            <a href="/fr/?lang=fr" class="lang-switch" hreflang="fr" lang="fr" aria-label="Version française">FR</a>
+            <a href="https://calendly.com/pierre-labamb/30min" target="_blank" class="nav-cta" aria-label="Book a discovery call">Book a call</a>
         </div>
     </div>
 </nav>
@@ -485,7 +516,7 @@
 <main>
 
 <!-- HERO -->
-<section class="hero" aria-label="Présentation labamb">
+<section class="hero" aria-label="About labamb">
     <canvas id="hero-canvas" class="section-canvas"></canvas>
     <div class="hero-grid"></div>
     <div class="container">
@@ -493,56 +524,56 @@
             <span class="hero-tag">Go-To-Market</span>
             <span class="hero-tag">Data</span>
             <span class="hero-tag">Automation</span>
-            <span class="hero-tag">IA</span>
+            <span class="hero-tag">AI</span>
             <span class="hero-tag">Scraping</span>
         </div>
-        <p class="hero-label">Studio IA d'intelligence économique</p>
-        <h1>Agence IA<br><span class="accent" id="typed-text"></span><span class="typing-cursor"></span></h1>
+        <p class="hero-label">AI business intelligence studio</p>
+        <h1>AI Agency<br><span class="accent" id="typed-text"></span><span class="typing-cursor"></span></h1>
         <p class="hero-description">
-            On construit des systèmes d'acquisition sur mesure, adaptés à votre marché,
-            avec les meilleures technologies IA — et ils vous appartiennent.
+            We build custom acquisition systems, tailored to your market,
+            with the best AI technologies — and you own them.
         </p>
         <div class="hero-ctas">
             <a href="https://calendly.com/pierre-labamb/30min" target="_blank" class="btn-primary">
-                Réserver un appel découverte <span class="arrow">→</span>
+                Book a discovery call <span class="arrow">→</span>
             </a>
-            <a href="#domains" class="btn-secondary">Voir nos domaines d'action</a>
+            <a href="#domains" class="btn-secondary">See our areas of expertise</a>
         </div>
     </div>
 </section>
 
 <!-- PROBLEM -->
-<section class="problem" id="problem" aria-label="Le constat">
+<section class="problem" id="problem" aria-label="The reality">
     <canvas id="problem-canvas" class="section-canvas"></canvas>
     <div class="container">
         <div class="problem-grid">
             <div class="reveal">
-                <p class="problem-label">Le constat</p>
-                <h2>Tout le monde parle d'IA.<br>On vous aide à y voir plus clair.</h2>
+                <p class="problem-label">The reality</p>
+                <h2>Everyone is talking about AI.<br>We help you see clearly.</h2>
                 <p class="problem-text">
-                    Un nouvel outil par semaine. Un post LinkedIn par heure qui promet des résultats.
-                    Tout le monde teste tout. Personne ne sait par où commencer.<br><br>
-                    Vous n'avez pas besoin de plus de technologie.
-                    Vous avez besoin de savoir laquelle compte pour vous, dans quel ordre,
-                    et comment la faire marcher.
+                    A new tool every week. A LinkedIn post every hour promising results.
+                    Everyone tests everything. Nobody knows where to start.<br><br>
+                    You don't need more technology.
+                    You need to know which one matters to you, in what order,
+                    and how to make it work.
                 </p>
             </div>
             <div class="problem-stats">
                 <div class="stat-card reveal reveal-delay-1">
                     <div class="stat-number" data-count="73">0</div>
-                    <div class="stat-label">% des entreprises B2B n'exploitent<br>pas l'IA dans leur GTM</div>
+                    <div class="stat-label">% of B2B companies don't use<br>AI in their GTM</div>
                 </div>
                 <div class="stat-card reveal reveal-delay-2">
                     <div class="stat-number" data-count="12" data-suffix="+">0</div>
-                    <div class="stat-label">outils empilés en moyenne<br>sans stratégie claire</div>
+                    <div class="stat-label">tools stacked on average<br>with no clear strategy</div>
                 </div>
                 <div class="stat-card reveal reveal-delay-3">
                     <div class="stat-number" data-count="80" data-suffix="%">0</div>
-                    <div class="stat-label">du temps sales perdu<br>sur des tâches automatisables</div>
+                    <div class="stat-label">of sales time lost<br>on tasks that could be automated</div>
                 </div>
                 <div class="stat-card reveal reveal-delay-4">
-                    <div class="stat-number" data-count="2" data-suffix=" sem.">0</div>
-                    <div class="stat-label">pour livrer un premier<br>système fonctionnel</div>
+                    <div class="stat-number" data-count="2" data-suffix=" wks">0</div>
+                    <div class="stat-label">to deliver a first<br>working system</div>
                 </div>
             </div>
         </div>
@@ -550,110 +581,110 @@
 </section>
 
 <!-- PROCESS -->
-<section class="process" id="process" aria-label="Notre méthode">
+<section class="process" id="process" aria-label="Our method">
     <canvas id="process-canvas" class="section-canvas"></canvas>
     <div class="container">
         <div class="section-header reveal">
-            <p class="section-label">Comment ça marche</p>
-            <h2>Simple. Concret. Rapide.</h2>
-            <p>On part de votre réalité, pas d'une stack à la mode.</p>
+            <p class="section-label">How it works</p>
+            <h2>Simple. Concrete. Fast.</h2>
+            <p>We start from your reality, not from a trendy stack.</p>
         </div>
         <div class="process-steps">
             <div class="step reveal reveal-delay-1">
                 <div class="step-number">01</div>
-                <h3>On écoute</h3>
-                <p>Votre marché, vos cibles, vos outils et vos process. On comprend où vous en êtes et où vous voulez aller.</p>
+                <h3>We listen</h3>
+                <p>Your market, your targets, your tools and your processes. We understand where you are and where you want to go.</p>
             </div>
             <div class="step reveal reveal-delay-2">
                 <div class="step-number">02</div>
-                <h3>On priorise</h3>
-                <p>Les chantiers à fort impact, les premières actions concrètes. Pas de roadmap à 6 mois — un plan d'action clair.</p>
+                <h3>We prioritize</h3>
+                <p>High-impact projects, first concrete actions. No 6-month roadmap — a clear action plan.</p>
             </div>
             <div class="step reveal reveal-delay-3">
                 <div class="step-number">03</div>
-                <h3>On livre</h3>
-                <p>Un premier système fonctionnel, adapté à votre contexte, livré rapidement. Vous le comprenez, vous pouvez le faire évoluer.</p>
+                <h3>We deliver</h3>
+                <p>A first working system, adapted to your context, delivered fast. You understand it, and you can make it evolve.</p>
             </div>
             <div class="step reveal reveal-delay-4">
                 <div class="step-number">04</div>
-                <h3>On itère</h3>
-                <p>On mesure, on ajuste, on passe au chantier suivant. Votre système grandit avec vous.</p>
+                <h3>We iterate</h3>
+                <p>We measure, we adjust, we move on to the next project. Your system grows with you.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- DOMAINS -->
-<section class="domains" id="domains" aria-label="Nos domaines d'action">
+<section class="domains" id="domains" aria-label="Our areas of expertise">
     <canvas id="domains-canvas" class="section-canvas"></canvas>
     <div class="container">
         <div class="section-header reveal">
-            <p class="section-label">Nos domaines d'action</p>
-            <h2>Tout ce qu'on sait construire pour vous.</h2>
-            <p>Chaque système est conçu sur mesure, documenté, et vous appartient.</p>
+            <p class="section-label">Our areas of expertise</p>
+            <h2>Everything we can build for you.</h2>
+            <p>Every system is custom-built, documented, and yours.</p>
         </div>
         <div class="domains-grid">
             <div class="domain-card reveal reveal-delay-1">
                 <div class="domain-icon">📡</div>
-                <h3>Data & Intelligence commerciale</h3>
-                <div class="tagline">Scraping multi-sources, enrichissement waterfall, cartographie marché</div>
-                <p>On ne travaille pas avec des bases génériques. LinkedIn, Google Maps, avis clients, presse locale, job boards, données légales — chaque source complète la précédente.</p>
+                <h3>Data & Sales Intelligence</h3>
+                <div class="tagline">Multi-source scraping, waterfall enrichment, market mapping</div>
+                <p>We don't work with generic databases. LinkedIn, Google Maps, customer reviews, local press, job boards, legal data — each source complements the previous one.</p>
             </div>
             <div class="domain-card reveal reveal-delay-2">
                 <div class="domain-icon">🎯</div>
-                <h3>Signaux d'achat & Intent Data</h3>
-                <div class="tagline">Détection temps réel, scoring dynamique, alertes automatiques</div>
-                <p>Recrutements, levées de fonds, pubs actives, avis négatifs chez un concurrent — on capte les signaux qui comptent et on vous alerte au bon moment.</p>
+                <h3>Buying Signals & Intent Data</h3>
+                <div class="tagline">Real-time detection, dynamic scoring, automatic alerts</div>
+                <p>Hiring, fundraising, active ads, negative reviews of a competitor — we capture the signals that matter and alert you at the right time.</p>
             </div>
             <div class="domain-card reveal reveal-delay-1">
                 <div class="domain-icon">🧠</div>
-                <h3>Moteur IA & Copywriting</h3>
-                <div class="tagline">Prompts propriétaires, personnalisation à 30 data points, matching cas clients</div>
-                <p>Chaque message est alimenté par des données réelles. L'IA détecte l'angle d'attaque optimal et génère des séquences calibrées mot par mot. Pas du {FirstName}.</p>
+                <h3>AI Engine & Copywriting</h3>
+                <div class="tagline">Proprietary prompts, personalization on 30 data points, customer case matching</div>
+                <p>Every message is fed by real data. The AI finds the best angle and generates sequences calibrated word by word. Not just {FirstName}.</p>
             </div>
             <div class="domain-card reveal reveal-delay-2">
                 <div class="domain-icon">🧭</div>
-                <h3>Stratégie Go-To-Market</h3>
-                <div class="tagline">ICP, positionnement, séquençage multicanal, segmentation</div>
-                <p>Avant de parler outils, on parle business. Vos vrais clients, le bon message, le bon canal, le bon timing. On séquence et on priorise.</p>
+                <h3>Go-To-Market Strategy</h3>
+                <div class="tagline">ICP, positioning, multichannel sequencing, segmentation</div>
+                <p>Before talking tools, we talk business. Your real customers, the right message, the right channel, the right timing. We sequence and we prioritize.</p>
             </div>
             <div class="domain-card reveal reveal-delay-1">
                 <div class="domain-icon">📬</div>
-                <h3>Infrastructure d'envoi</h3>
-                <div class="tagline">Domaines dédiés, warm-up, délivrabilité, multi-mailboxes</div>
-                <p>SPF, DKIM, DMARC, warm-up progressif, monitoring continu. Votre domaine principal est protégé. La stack d'envoi est incluse.</p>
+                <h3>Sending Infrastructure</h3>
+                <div class="tagline">Dedicated domains, warm-up, deliverability, multiple mailboxes</div>
+                <p>SPF, DKIM, DMARC, gradual warm-up, continuous monitoring. Your main domain is protected. The sending stack is included.</p>
             </div>
             <div class="domain-card reveal reveal-delay-2">
                 <div class="domain-icon">⚡</div>
-                <h3>Workflows & Automatisation</h3>
-                <div class="tagline">n8n, agents IA, connexion outils, documentation complète</div>
-                <p>On connecte vos outils, on automatise l'enrichissement, le scoring, le routing. Chaque workflow est documenté — vous comprenez ce qui tourne.</p>
+                <h3>Workflows & Automation</h3>
+                <div class="tagline">n8n, AI agents, tool integrations, full documentation</div>
+                <p>We connect your tools and automate enrichment, scoring and routing. Every workflow is documented — you understand what is running.</p>
             </div>
             <div class="domain-card reveal reveal-delay-1">
                 <div class="domain-icon">📊</div>
-                <h3>RevOps & Pilotage</h3>
-                <div class="tagline">CRM, dashboards, reporting auto, optimisation continue</div>
-                <p>On structure votre CRM, on met en place les dashboards et le reporting automatisé. Tout est ajusté en fonction des résultats réels.</p>
+                <h3>RevOps & Performance Management</h3>
+                <div class="tagline">CRM, dashboards, automated reporting, continuous optimization</div>
+                <p>We structure your CRM and set up dashboards and automated reporting. Everything is adjusted based on real results.</p>
             </div>
             <div class="domain-card reveal reveal-delay-2">
                 <div class="domain-icon">🔍</div>
-                <h3>Veille concurrentielle</h3>
-                <div class="tagline">Monitoring concurrents, stacks techno, presse, benchmarks</div>
-                <p>Offres, recrutements, contenus, positionnement — tout est surveillé automatiquement. Vous avez une longueur d'avance, sans effort.</p>
+                <h3>Competitive Intelligence</h3>
+                <div class="tagline">Competitor monitoring, tech stacks, press, benchmarks</div>
+                <p>Offers, hiring, content, positioning — everything is monitored automatically. You stay one step ahead, effortlessly.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section" id="cta" aria-label="Prendre rendez-vous">
+<section class="cta-section" id="cta" aria-label="Book a meeting">
     <canvas id="cta-canvas" class="section-canvas"></canvas>
     <div class="container">
         <div class="cta-box reveal">
-            <h2>On en parle ?</h2>
-            <p>30 minutes pour comprendre votre contexte et identifier les premiers leviers.</p>
+            <h2>Shall we talk?</h2>
+            <p>30 minutes to understand your context and identify the first levers.</p>
             <a href="https://calendly.com/pierre-labamb/30min" target="_blank" class="btn-primary">
-                Réserver un appel découverte <span class="arrow">→</span>
+                Book a discovery call <span class="arrow">→</span>
             </a>
         </div>
     </div>
@@ -662,7 +693,7 @@
 </main>
 
 <footer>
-    <p>© 2026 <strong>labamb</strong> — Studio IA d'intelligence économique</p>
+    <p>© 2026 <strong>labamb</strong> — AI business intelligence studio</p>
 </footer>
 
 <script>
