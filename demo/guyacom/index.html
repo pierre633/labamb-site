@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guyacom Entreprises</title>
+<meta name="description" content="Fibre, très haut débit sans-fil, satellite et téléphonie pour les entreprises de Guyane. Une équipe à Cayenne, un technicien chez vous sous 48 h maximum.">
+<!-- Page de campagne outbound : pas d'indexation (évite le doublon avec guyacom.net) -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Charte Guyacom relevée sur guyacom.net le 22/10/2026 */
+    --orange: #F16C20;
+    --orange-dark: #D4561A;
+    --orange-soft: #FFF3EA;
+    --green: #97B314;
+    --green-dark: #5F7410;
+    --green-soft: #F4F7E6;
+    --ink: #23282B;
+    --text: #313131;
+    --muted: #5F6468;
+    --line: #E6E8E3;
+    --bg: #FFFFFF;
+    --bg-alt: #F8F9F5;
+    --radius: 18px;
+    --shadow: 0 18px 40px -18px rgba(35, 40, 43, .25);
+    --font-head: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 400 17px/1.65 var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: var(--font-head); color: var(--ink); line-height: 1.15; margin: 0; letter-spacing: -.01em; }
+  h2 { font-size: clamp(28px, 3.4vw, 40px); font-weight: 800; }
+  h3 { font-size: 19px; font-weight: 700; }
+  p { margin: 0; }
+  .wrap { width: min(1160px, 100% - 32px); margin-inline: auto; }
+  .icon { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 700 13px/1 var(--font-head); text-transform: uppercase; letter-spacing: .08em;
+    color: var(--green-dark);
+  }
+  .eyebrow::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(151, 179, 20, .2); }
+  .section { padding: clamp(64px, 9vw, 112px) 0; }
+  .section-head { max-width: 680px; margin-bottom: 48px; }
+  .section-head h2 { margin-top: 14px; }
+  .section-head p { margin-top: 16px; color: var(--muted); font-size: 18px; }
+
+  /* Boutons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 15px 26px; border-radius: 999px; border: 2px solid transparent;
+    font: 700 16px/1 var(--font-head); text-decoration: none; cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s, transform .2s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--orange); color: #fff; }
+  .btn-primary:hover { background: var(--orange-dark); }
+  .btn-ghost { border-color: var(--ink); color: var(--ink); background: transparent; }
+  .btn-ghost:hover { background: var(--ink); color: #fff; }
+  .btn .icon { width: 18px; height: 18px; }
+
+  /* En-tête */
+  .topbar { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, .92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand img { height: 46px; width: auto; }
+  .brand span { font: 600 13px/1.2 var(--font-head); color: var(--muted); padding-left: 12px; border-left: 1px solid var(--line); }
+  .topbar-actions { display: flex; align-items: center; gap: 18px; }
+  .phone-link { display: inline-flex; align-items: center; gap: 8px; font: 700 16px/1 var(--font-head); color: var(--ink); text-decoration: none; }
+  .phone-link .icon { color: var(--orange); width: 18px; height: 18px; }
+  .topbar .btn { padding: 11px 20px; font-size: 14px; }
+
+  /* Hero */
+  .hero { position: relative; overflow: hidden; padding: clamp(48px, 7vw, 88px) 0 clamp(64px, 8vw, 96px); background: linear-gradient(180deg, var(--green-soft) 0%, #fff 75%); }
+  .hero::after { /* rappel des rayures du logo */
+    content: ""; position: absolute; right: -120px; top: -60px; width: 420px; height: 420px; border-radius: 50%;
+    background: repeating-linear-gradient(-35deg, rgba(241, 108, 32, .14) 0 6px, transparent 6px 20px);
+    pointer-events: none;
+  }
+  .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+  .hero h1 { margin-top: 20px; font-size: clamp(34px, 4.6vw, 56px); font-weight: 800; }
+  .hero h1 em { font-style: normal; color: var(--orange); white-space: nowrap; }
+  .hero .lead { margin-top: 22px; font-size: 19px; color: var(--muted); max-width: 560px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+  .hero-checks { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 28px 0 0; padding: 0; list-style: none; font-size: 15px; font-weight: 600; color: var(--ink); }
+  .hero-checks li { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-checks .icon { width: 18px; height: 18px; color: var(--green-dark); stroke-width: 2.6; }
+
+  .hero-visual { position: relative; }
+  .hero-photo { border-radius: 28px; overflow: hidden; aspect-ratio: 4 / 4.4; box-shadow: var(--shadow); background: #cfe0ea; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-tag {
+    position: absolute; top: 22px; left: 22px; display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 14px; border-radius: 999px; background: rgba(255, 255, 255, .95);
+    font: 700 13px/1 var(--font-head); color: var(--ink); box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+  }
+  .hero-tag .icon { width: 16px; height: 16px; color: var(--orange); }
+  .promise-card {
+    position: absolute; left: -36px; bottom: -28px; width: min(340px, 88%);
+    background: #fff; border-radius: var(--radius); padding: 22px 22px 18px; box-shadow: var(--shadow); border: 1px solid var(--line);
+  }
+  .promise-card h3 { font-size: 15px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .steps-mini { list-style: none; margin: 14px 0 0; padding: 0; }
+  .steps-mini li { position: relative; display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding-bottom: 14px; font-size: 15px; line-height: 1.4; color: var(--ink); }
+  .steps-mini li:last-child { padding-bottom: 0; }
+  .steps-mini li::before { content: ""; position: absolute; left: 13px; top: 28px; bottom: 2px; width: 2px; background: var(--line); }
+  .steps-mini li:last-child::before { display: none; }
+  .steps-mini .dot { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--green-soft); color: var(--green-dark); }
+  .steps-mini .dot .icon { width: 15px; height: 15px; stroke-width: 2.4; }
+  .steps-mini li:last-child .dot { background: var(--orange); color: #fff; }
+  .steps-mini strong { font-family: var(--font-head); }
+
+  /* Chiffres */
+  .stats { border-block: 1px solid var(--line); background: #fff; }
+  .stats .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { padding: 34px 24px; border-left: 1px solid var(--line); }
+  .stat:first-child { border-left: 0; padding-left: 0; }
+  .stat b { display: block; font: 800 clamp(30px, 3.2vw, 40px)/1 var(--font-head); color: var(--ink); }
+  .stat b span { color: var(--orange); }
+  .stat p { margin-top: 10px; font-size: 15px; color: var(--muted); line-height: 1.45; }
+
+  /* Comparatif */
+  .compare { background: var(--bg-alt); }
+  .compare-table { border-radius: 22px; overflow: hidden; border: 1px solid var(--line); background: #fff; box-shadow: 0 1px 0 var(--line); }
+  .compare-row { display: grid; grid-template-columns: .8fr 1.1fr 1.1fr; border-top: 1px solid var(--line); }
+  .compare-row:first-child { border-top: 0; }
+  .compare-row > div { padding: 22px 26px; display: flex; align-items: flex-start; gap: 12px; font-size: 16px; line-height: 1.5; }
+  .compare-row .crit { font: 700 15px/1.4 var(--font-head); color: var(--ink); }
+  .compare-row .us { background: var(--orange-soft); color: var(--ink); font-weight: 600; }
+  .compare-row .them { color: var(--muted); }
+  .compare-row .us .icon { color: var(--orange); stroke-width: 2.6; width: 20px; height: 20px; margin-top: 2px; }
+  .compare-row .them .icon { color: #A2A6A9; width: 20px; height: 20px; margin-top: 2px; }
+  .compare-head > div { padding-block: 18px; font: 800 14px/1.2 var(--font-head); text-transform: uppercase; letter-spacing: .06em; }
+  .compare-head .us { background: var(--orange); color: #fff; }
+  .compare-head .them { background: #F1F2F0; color: var(--muted); }
+
+  /* Services */
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .service { position: relative; padding: 28px 24px 26px; border-radius: var(--radius); border: 1px solid var(--line); background: #fff; transition: border-color .2s, box-shadow .2s, transform .2s; }
+  .service:hover { border-color: rgba(151, 179, 20, .6); box-shadow: var(--shadow); transform: translateY(-3px); }
+  .service-icon { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; background: var(--green-soft); color: var(--green-dark); }
+  .service-icon .icon { width: 26px; height: 26px; }
+  .service h3 { margin-top: 22px; }
+  .service p { margin-top: 10px; font-size: 15.5px; color: var(--muted); line-height: 1.6; }
+  .service .tag { display: inline-block; margin-top: 16px; padding: 5px 10px; border-radius: 6px; background: var(--orange-soft); color: var(--orange-dark); font: 700 12px/1.2 var(--font-head); }
+
+  /* Ancrage local */
+  .local { position: relative; color: #fff; background: #1d2326; overflow: hidden; }
+  .local-bg { position: absolute; inset: 0; background: url("img/coucher-soleil.jpg") center 60% / cover no-repeat; opacity: .38; }
+  .local::before { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(29, 35, 38, .96) 0%, rgba(29, 35, 38, .82) 55%, rgba(29, 35, 38, .55) 100%); z-index: 1; }
+  .local .wrap { position: relative; z-index: 2; display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 6vw, 88px); align-items: start; }
+  .local h2 { color: #fff; margin-top: 14px; }
+  .local .eyebrow { color: #C9DE5A; }
+  .local-text p { margin-top: 18px; font-size: 18px; color: rgba(255, 255, 255, .82); max-width: 600px; }
+  .values { display: grid; gap: 14px; margin-top: 34px; }
+  .value { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; padding: 18px 20px; border-radius: 14px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .1); }
+  .value .icon { width: 24px; height: 24px; color: var(--orange); margin: 4px auto 0; }
+  .value h3 { color: #fff; font-size: 17px; }
+  .value p { margin-top: 4px; font-size: 15px; color: rgba(255, 255, 255, .72); }
+  .communes { padding: 28px; border-radius: 22px; background: rgba(255, 255, 255, .96); color: var(--ink); box-shadow: var(--shadow); }
+  .communes h3 { font-size: 20px; }
+  .communes > p { margin-top: 8px; font-size: 15px; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip { padding: 6px 11px; border-radius: 999px; font-size: 13.5px; font-weight: 600; background: var(--green-soft); color: var(--green-dark); }
+  .chip.hq { background: var(--orange); color: #fff; }
+  .communes .note { display: flex; gap: 10px; align-items: center; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14.5px; color: var(--ink); font-weight: 600; }
+  .communes .note .icon { color: var(--orange); }
+
+  /* Étapes */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; counter-reset: step; }
+  .step { position: relative; padding: 30px 26px; border-radius: var(--radius); background: var(--bg-alt); border: 1px solid var(--line); }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px;
+    background: var(--ink); color: #fff; font: 800 18px/1 var(--font-head);
+  }
+  .step:last-child::before { background: var(--orange); }
+  .step h3 { margin-top: 20px; }
+  .step p { margin-top: 10px; font-size: 15.5px; color: var(--muted); }
+
+  /* Contact */
+  .contact { background: linear-gradient(180deg, #fff 0%, var(--green-soft) 100%); }
+  .contact .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  .contact-info h2 { margin-top: 14px; }
+  .contact-info > p { margin-top: 16px; font-size: 18px; color: var(--muted); }
+  .contact-list { list-style: none; padding: 0; margin: 30px 0 0; display: grid; gap: 14px; }
+  .contact-list li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; }
+  .contact-list .ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: #fff; border: 1px solid var(--line); color: var(--orange); }
+  .contact-list .ic .icon { width: 20px; height: 20px; }
+  .contact-list small { display: block; font-size: 13px; color: var(--muted); }
+  .contact-list a, .contact-list span { font-weight: 600; color: var(--ink); text-decoration: none; }
+  .contact-list a:hover { color: var(--orange); }
+
+  .form-card { background: #fff; border-radius: 24px; padding: clamp(24px, 4vw, 40px); box-shadow: var(--shadow); border: 1px solid var(--line); }
+  .form-card h3 { font-size: 22px; }
+  .form-card > p { margin-top: 6px; font-size: 15px; color: var(--muted); }
+  form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+  .field { display: grid; gap: 6px; }
+  .field.full { grid-column: 1 / -1; }
+  label, .legend { font: 700 13.5px/1.3 var(--font-head); color: var(--ink); }
+  input, select {
+    width: 100%; padding: 13px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: #fff;
+    font: 400 16px/1.3 var(--font-body); color: var(--ink); transition: border-color .2s, box-shadow .2s;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px rgba(151, 179, 20, .18); }
+  fieldset { border: 0; padding: 0; margin: 0; }
+  .needs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .needs label { position: relative; cursor: pointer; font: 600 14px/1 var(--font-body); }
+  .needs input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .needs span { display: inline-block; padding: 10px 14px; border-radius: 999px; border: 1.5px solid var(--line); transition: all .15s; }
+  .needs input:checked + span { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .needs input:focus-visible + span { box-shadow: 0 0 0 4px rgba(151, 179, 20, .3); }
+  form .btn { grid-column: 1 / -1; width: 100%; padding-block: 17px; font-size: 17px; margin-top: 4px; }
+  .form-legal { grid-column: 1 / -1; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+  .form-done { display: none; text-align: center; padding: 40px 10px; }
+  .form-done .icon { width: 56px; height: 56px; margin: 0 auto 18px; color: #fff; background: var(--green); border-radius: 50%; padding: 14px; stroke-width: 3; }
+  .form-done p { margin-top: 10px; color: var(--muted); }
+  .form-card.sent form, .form-card.sent > p, .form-card.sent > h3 { display: none; }
+  .form-card.sent .form-done { display: block; }
+
+  /* Pied de page */
+  footer { background: var(--ink); color: rgba(255, 255, 255, .7); padding: 34px 0; font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+  footer img { height: 40px; width: auto; background: #fff; border-radius: 10px; padding: 4px 6px; }
+  footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  footer a { color: rgba(255, 255, 255, .85); text-decoration: none; }
+  footer a:hover { color: #fff; }
+
+  /* Bandeau de maquette : à retirer quand Guyacom valide la page */
+  .demo-strip { background: var(--ink); color: rgba(255, 255, 255, .85); text-align: center; padding: 8px 16px; font: 600 12.5px/1.4 var(--font-body); }
+  .demo-strip b { color: #fff; }
+
+  /* Barre d'action mobile */
+  .mobile-bar { display: none; }
+
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats .wrap { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+    .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+  }
+  @media (max-width: 860px) {
+    .hero .wrap, .local .wrap, .contact .wrap { grid-template-columns: 1fr; }
+    .hero::after { width: 240px; height: 240px; right: -120px; top: -110px; }
+    .hero-visual { margin: 0 0 30px; }
+    .hero-photo { aspect-ratio: 16 / 11; }
+    .promise-card { left: 16px; right: 16px; width: auto; bottom: -30px; }
+    .steps { grid-template-columns: 1fr; }
+    .compare-row { grid-template-columns: 1fr 1fr; }
+    .compare-row .crit { grid-column: 1 / -1; padding-bottom: 0; background: #fff; }
+    .compare-row > div { padding: 16px 18px; font-size: 15px; }
+    .compare-head .crit { display: none; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; padding-bottom: 76px; }
+    .topbar .wrap { height: 64px; }
+    .brand img { height: 40px; }
+    .brand span, .topbar .btn { display: none; }
+    .phone-link { font-size: 15px; }
+    .hero h1 em { white-space: normal; }
+    .hero-ctas .btn { width: 100%; }
+    .services-grid { grid-template-columns: 1fr; }
+    .stats .wrap { grid-template-columns: 1fr 1fr; }
+    .stat { padding: 24px 16px; }
+    .stat:nth-child(odd) { padding-left: 0; border-left: 0; }
+    form { grid-template-columns: 1fr; }
+    .mobile-bar {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, .96);
+      backdrop-filter: blur(10px); border-top: 1px solid var(--line);
+    }
+    .mobile-bar .btn { padding: 14px 10px; font-size: 15px; white-space: nowrap; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-strip"><b>Maquette</b> réalisée par labamb pour Guyacom · non contractuelle</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><path d="M12 20h.01"/></symbol>
+  <symbol id="i-satellite" viewBox="0 0 24 24"><path d="M4 10a7.31 7.31 0 0 0 10 10Z"/><path d="m9 15 3-3"/><path d="M17 13a6 6 0 0 0-6-6"/><path d="M21 13A10 10 0 0 0 11 3"/></symbol>
+  <symbol id="i-headset" viewBox="0 0 24 24"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Guyacom, retour en haut">
+      <img src="img/logo-guyacom.png" alt="Guyacom" width="119" height="110">
+      <span>Solutions<br>entreprises</span>
+    </a>
+    <div class="topbar-actions">
+      <a class="phone-link" href="tel:+594594400000"><svg class="icon"><use href="#i-phone"/></svg>0594 40 00 00</a>
+      <a class="btn btn-primary" href="#contact">Être rappelé</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Opérateur télécom guyanais depuis 2006</span>
+        <h1>Internet pro en Guyane&nbsp;: une équipe locale, un technicien chez vous <em>sous 48&nbsp;h.</em></h1>
+        <p class="lead">Fibre, très haut débit sans-fil, satellite et téléphonie pour les entreprises guyanaises. Quand vous appelez Guyacom, c'est Cayenne qui décroche&nbsp;: un interlocuteur qui connaît votre dossier, votre commune et votre installation.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contact">Être rappelé par un conseiller</a>
+          <a class="btn btn-ghost" href="tel:+594594400000"><svg class="icon"><use href="#i-phone"/></svg>0594 40 00 00</a>
+        </div>
+        <ul class="hero-checks">
+          <li><svg class="icon"><use href="#i-check"/></svg>Équipe basée à Cayenne</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Intervention sous 48&nbsp;h max</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Du littoral à l'intérieur</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-photo">
+          <img src="img/fleuve.jpg" alt="Fleuve guyanais bordé de forêt" width="1500" height="1019">
+        </div>
+        <span class="hero-tag"><svg class="icon"><use href="#i-pin"/></svg>2 rue Madame Lydie Pichevin, Cayenne</span>
+        <div class="promise-card">
+          <h3>En cas de panne</h3>
+          <ol class="steps-mini">
+            <li><span class="dot"><svg class="icon"><use href="#i-phone"/></svg></span><span>Vous appelez le <strong>0594 40 00 00</strong>, une équipe à Cayenne répond</span></li>
+            <li><span class="dot"><svg class="icon"><use href="#i-headset"/></svg></span><span>Diagnostic par un technicien qui connaît votre installation</span></li>
+            <li><span class="dot"><svg class="icon"><use href="#i-clock"/></svg></span><span><strong>Intervention sur site sous 48&nbsp;h maximum</strong></span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="Guyacom en chiffres">
+    <div class="wrap">
+      <div class="stat"><b>2006</b><p>Opérateur créé et installé en Guyane</p></div>
+      <div class="stat"><b>48<span>&nbsp;h</span></b><p>Délai maximum d'intervention sur site</p></div>
+      <div class="stat"><b>200<span>&nbsp;km</span></b><p>De fibre tirée depuis le Brésil jusqu'à Cayenne</p></div>
+      <div class="stat"><b>100<span>&nbsp;%</span></b><p>Guyanais&nbsp;: équipe, décisions et service client</p></div>
+    </div>
+  </section>
+
+  <section class="section compare">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Local ou national</span>
+        <h2>Ce qui change quand votre opérateur est guyanais</h2>
+        <p>Une coupure, c'est une journée de chiffre d'affaires. Ce qui compte, c'est la vitesse à laquelle quelqu'un s'en occupe vraiment.</p>
+      </div>
+      <div class="compare-table" role="table" aria-label="Comparatif Guyacom et grandes enseignes">
+        <div class="compare-row compare-head" role="row">
+          <div class="crit" role="columnheader"></div>
+          <div class="us" role="columnheader">Guyacom</div>
+          <div class="them" role="columnheader">Grande enseigne nationale</div>
+        </div>
+        <div class="compare-row" role="row">
+          <div class="crit" role="rowheader">Votre interlocuteur</div>
+          <div class="us" role="cell"><svg class="icon"><use href="#i-check"/></svg>Une équipe à Cayenne, qui suit votre dossier dans la durée</div>
+          <div class="them" role="cell"><svg class="icon"><use href="#i-x"/></svg>Un centre d'appels, un nouvel interlocuteur à chaque appel</div>
+        </div>
+        <div class="compare-row" role="row">
+          <div class="crit" role="rowheader">En cas de panne</div>
+          <div class="us" role="cell"><svg class="icon"><use href="#i-check"/></svg>Un technicien sur site sous 48&nbsp;h maximum</div>
+          <div class="them" role="cell"><svg class="icon"><use href="#i-x"/></svg>Un ticket en file d'attente, un délai qui dépend du planning</div>
+        </div>
+        <div class="compare-row" role="row">
+          <div class="crit" role="rowheader">Connaissance du terrain</div>
+          <div class="us" role="cell"><svg class="icon"><use href="#i-check"/></svg>Fibre, radio ou satellite&nbsp;: nous savons ce qui marche à votre adresse</div>
+          <div class="them" role="cell"><svg class="icon"><use href="#i-x"/></svg>Des offres pensées pour la métropole, adaptées après coup</div>
+        </div>
+        <div class="compare-row" role="row">
+          <div class="crit" role="rowheader">Les décisions</div>
+          <div class="us" role="cell"><svg class="icon"><use href="#i-check"/></svg>Prises ici, sans escalade vers un siège lointain</div>
+          <div class="them" role="cell"><svg class="icon"><use href="#i-x"/></svg>Remontées à un siège à plusieurs fuseaux horaires</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Nos solutions entreprises</span>
+        <h2>La bonne technologie pour chaque adresse de Guyane</h2>
+        <p>Bureaux à Cayenne, commerce à Kourou, chantier sur le fleuve&nbsp;: nous choisissons avec vous la connexion qui tient.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service">
+          <div class="service-icon"><svg class="icon"><use href="#i-zap"/></svg></div>
+          <h3>Fibre optique</h3>
+          <p>Le très haut débit pour vos bureaux et commerces, sur un réseau alternatif au cuivre historique.</p>
+          <span class="tag">Zones fibrées</span>
+        </article>
+        <article class="service">
+          <div class="service-icon"><svg class="icon"><use href="#i-wifi"/></svg></div>
+          <h3>Sans-fil très haut débit</h3>
+          <p>Quand la fibre n'est pas encore là&nbsp;: une liaison radio très haut débit, installée et suivie par nos techniciens.</p>
+          <span class="tag">Sans attendre la fibre</span>
+        </article>
+        <article class="service">
+          <div class="service-icon"><svg class="icon"><use href="#i-satellite"/></svg></div>
+          <h3>Internet par satellite</h3>
+          <p>Pour les sites isolés et les communes de l'intérieur. Nous connectons les zones blanches de Guyane depuis nos débuts.</p>
+          <span class="tag">Partout en Guyane</span>
+        </article>
+        <article class="service">
+          <div class="service-icon"><svg class="icon"><use href="#i-headset"/></svg></div>
+          <h3>Téléphonie fixe et PBX</h3>
+          <p>Lignes fixes et standard téléphonique pour vos équipes, configurés et dépannés sur place.</p>
+          <span class="tag">Standard d'entreprise</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section local">
+    <div class="local-bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="local-text">
+        <span class="eyebrow">100 % guyanais</span>
+        <h2>Née en Guyane, pour désenclaver la Guyane</h2>
+        <p>Depuis 2006, Guyacom connecte les entreprises et les habitants du territoire, jusque dans les communes que les autres oublient. Pour sortir de la dépendance à un seul câble sous-marin, nous avons tiré plus de 200&nbsp;km de fibre depuis le Brésil jusqu'à Cayenne.</p>
+        <p>Nos équipes vivent ici. Nos décisions se prennent ici. Votre connexion est suivie ici.</p>
+        <div class="values">
+          <div class="value"><svg class="icon"><use href="#i-users"/></svg><div><h3>Proximité</h3><p>Connaître et répondre aux besoins de chaque client, dans toute leur diversité.</p></div></div>
+          <div class="value"><svg class="icon"><use href="#i-bulb"/></svg><div><h3>Innovation</h3><p>Adapter localement le meilleur des technologies développées ailleurs.</p></div></div>
+          <div class="value"><svg class="icon"><use href="#i-shield"/></svg><div><h3>Intégrité</h3><p>Assurer le meilleur service, au prix juste.</p></div></div>
+        </div>
+      </div>
+      <div class="communes">
+        <h3>De Cayenne à Maripasoula</h3>
+        <p>Fibre, radio ou satellite selon votre commune&nbsp;: une solution sur tout le territoire.</p>
+        <div class="chips">
+          <span class="chip hq">Cayenne</span><span class="chip">Remire-Montjoly</span><span class="chip">Matoury</span><span class="chip">Macouria</span><span class="chip">Montsinéry-Tonnegrande</span><span class="chip">Roura</span><span class="chip">Kourou</span><span class="chip">Sinnamary</span><span class="chip">Iracoubo</span><span class="chip">Saint-Laurent-du-Maroni</span><span class="chip">Mana</span><span class="chip">Awala-Yalimapo</span><span class="chip">Apatou</span><span class="chip">Grand-Santi</span><span class="chip">Papaichton</span><span class="chip">Maripasoula</span><span class="chip">Saül</span><span class="chip">Saint-Élie</span><span class="chip">Régina</span><span class="chip">Saint-Georges-de-l'Oyapock</span><span class="chip">Ouanary</span><span class="chip">Camopi</span>
+        </div>
+        <p class="note"><svg class="icon"><use href="#i-tool"/></svg>Installation et dépannage par nos propres techniciens</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Simple et rapide</span>
+        <h2>Changer d'opérateur, sans perdre une journée</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Vous laissez votre numéro</h3><p>Trente secondes, ci-dessous. Ou appelez directement le 0594 40 00 00.</p></div>
+        <div class="step"><h3>Un conseiller de Cayenne vous rappelle</h3><p>Il étudie votre adresse et vos usages, puis vous propose la technologie adaptée, au prix juste.</p></div>
+        <div class="step"><h3>Nos techniciens installent et suivent</h3><p>Mise en service par notre équipe, puis un seul numéro à appeler et une intervention sous 48&nbsp;h maximum.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <div class="contact-info">
+        <span class="eyebrow">Parlons de votre connexion</span>
+        <h2>Un interlocuteur qui répond, à deux pas de chez vous</h2>
+        <p>Laissez vos coordonnées&nbsp;: un conseiller Guyacom vous rappelle pour faire le point sur votre installation actuelle.</p>
+        <ul class="contact-list">
+          <li><span class="ic"><svg class="icon"><use href="#i-phone"/></svg></span><div><small>Téléphone</small><a href="tel:+594594400000">0594 40 00 00</a></div></li>
+          <li><span class="ic"><svg class="icon"><use href="#i-mail"/></svg></span><div><small>E-mail</small><a href="mailto:service.client@guyacom.fr">service.client@guyacom.fr</a></div></li>
+          <li><span class="ic"><svg class="icon"><use href="#i-pin"/></svg></span><div><small>Agence</small><span>2 rue Madame Lydie Pichevin, 97300 Cayenne</span></div></li>
+        </ul>
+      </div>
+
+      <div class="form-card" id="form-card">
+        <h3>Être rappelé par un conseiller</h3>
+        <p>Réponse par l'équipe de Cayenne, pas par un centre d'appels.</p>
+        <!-- Maquette : formulaire à brancher (CRM, e-mail ou outil de suivi de campagne) -->
+        <form id="lead-form">
+          <div class="field"><label for="f-name">Nom et prénom</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="f-company">Entreprise</label><input id="f-company" name="company" autocomplete="organization" required></div>
+          <div class="field"><label for="f-phone">Téléphone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="0694 00 00 00" required></div>
+          <div class="field">
+            <label for="f-city">Commune</label>
+            <select id="f-city" name="city" required>
+              <option value="">Choisir</option>
+              <option>Cayenne</option><option>Remire-Montjoly</option><option>Matoury</option><option>Macouria</option><option>Montsinéry-Tonnegrande</option><option>Roura</option><option>Kourou</option><option>Sinnamary</option><option>Iracoubo</option><option>Saint-Laurent-du-Maroni</option><option>Mana</option><option>Awala-Yalimapo</option><option>Apatou</option><option>Grand-Santi</option><option>Papaichton</option><option>Maripasoula</option><option>Saül</option><option>Saint-Élie</option><option>Régina</option><option>Saint-Georges-de-l'Oyapock</option><option>Ouanary</option><option>Camopi</option>
+            </select>
+          </div>
+          <fieldset class="field full">
+            <legend class="legend">Votre besoin</legend>
+            <div class="needs">
+              <label><input type="checkbox" name="need" value="fibre"><span>Fibre</span></label>
+              <label><input type="checkbox" name="need" value="sans-fil"><span>Sans-fil</span></label>
+              <label><input type="checkbox" name="need" value="satellite"><span>Satellite</span></label>
+              <label><input type="checkbox" name="need" value="telephonie"><span>Téléphonie / PBX</span></label>
+              <label><input type="checkbox" name="need" value="conseil"><span>Je ne sais pas encore</span></label>
+            </div>
+          </fieldset>
+          <button class="btn btn-primary" type="submit">Être rappelé</button>
+          <p class="form-legal">Vos coordonnées servent uniquement à vous recontacter au sujet de votre demande. Elles ne sont ni cédées ni revendues.</p>
+        </form>
+        <div class="form-done" role="status">
+          <svg class="icon"><use href="#i-check"/></svg>
+          <h3>Merci, c'est noté.</h3>
+          <p>Version de démonstration&nbsp;: ce formulaire n'envoie encore rien. Pour être rappelé dès maintenant, appelez le <a href="tel:+594594400000">0594 40 00 00</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo-guyacom.png" alt="Guyacom" width="119" height="110">
+    <nav>
+      <a href="https://www.guyacom.net/">guyacom.net</a>
+      <a href="https://monespace.guyacom.net/">Espace abonnés</a>
+      <a href="https://www.guyacom.net/contact/">Contact</a>
+    </nav>
+    <span>© Guyacom, Cayenne, Guyane française</span>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-ghost" href="tel:+594594400000"><svg class="icon"><use href="#i-phone"/></svg>Appeler</a>
+  <a class="btn btn-primary" href="#contact">Être rappelé</a>
+</div>
+
+<script>
+  document.getElementById('lead-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('form-card').classList.add('sent');
+  });
+</script>
+</body>
+</html>
